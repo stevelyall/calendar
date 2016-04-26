@@ -9,7 +9,7 @@
 				<div class="col-md-6">
 					<div class="form-group">
 						<label>Event Name</label>
-						<input type="text" ng-model="event.name" class="form-control" ng-required="true"
+						<input type="text" ng-model="event.title" class="form-control" ng-required="true"
 						       minlength="1">
 					</div>
 				</div>
@@ -20,9 +20,9 @@
 						<label>Event Type</label>
 						<br>
 						<div class="btn-group">
-						<label class="btn btn-success" ng-model="event.type" uib-btn-radio="'Meeting'">Meeting</label>
-						<label class="btn btn-success" ng-model="event.type" uib-btn-radio="'Appointment'">Appointment</label>
-						<label class="btn btn-success" ng-model="event.type" uib-btn-radio="'Task'">Task</label>
+						<label class="btn btn-success" ng-model="event.type" uib-btn-radio="'info'">Meeting</label>
+						<label class="btn btn-success" ng-model="event.type" uib-btn-radio="'warning'">Appointment</label>
+						<label class="btn btn-success" ng-model="event.type" uib-btn-radio="'success'">Task</label>
 					</div>
 					</div>
 

@@ -14,12 +14,20 @@ angular.module('calendar.monthView', ['ngRoute'])
   $scope.calendarView = 'month';
   $scope.calendarDate = new Date;
 
-  $scope.events = [
-    {
-      title: 'My event title', // The title of the event
-      type: 'info', // The type of the event (determines its color). Can be important, warning, info, inverse, success or special
-      startsAt: new Date(), // A javascript date object for when the event starts
-      endsAt: new Date(), // Optional - a javascript date object for when the event ends
+  $scope.events = [];
+  $scope.events.push(new Event('Test Event', 'info', new Date(), new Date()));
+  $scope.events.push(new Event('Test Event', 'warning', new Date(), new Date()));
+  $scope.events.push(new Event('Test Event', 'success', new Date(), new Date()));
+
+  // $scope.calendarTitle;
+
+  function Event(title, type, start, end) {
+    // TODO task types separate
+    return {
+      title : title,
+      type : type,
+      startsAt : start,
+      endsAt : end,
       editable: true, // If edit-event-html is set and this field is explicitly set to false then dont make it editable.
       deletable: true, // If delete-event-html is set and this field is explicitly set to false then dont make it deleteable
       draggable: true, //Allow an event to be dragged and dropped
@@ -28,10 +36,8 @@ angular.module('calendar.monthView', ['ngRoute'])
       recursOn: 'year', // If set the event will recur on the given period. Valid values are year or month
       cssClass: 'a-css-class-name' //A CSS class (or more, just separate with spaces) that will be added to the event when it is displayed on each view. Useful for marking an event as selected / active etc
     }
-  ];
-
-  // $scope.calendarTitle;
-
+  }
+  
   $scope.onEventClicked = function(event) {
     console.log(event)
     console.log('clicked event');
@@ -90,10 +96,15 @@ angular.module('calendar.monthView', ['ngRoute'])
 
     $scope.ok = function () {
       $uibModalInstance.close($scope.event);
-      console.log($scope.event)
+      console.log($scope.event);
+      addEvent($scope.event)
+      
+      $scope.events.push($scope.event);
     };
 
     $scope.cancel = function () {
       $uibModalInstance.dismiss('cancel');
     };
+    
+    
   });
