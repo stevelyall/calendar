@@ -1,4 +1,31 @@
-<h2 class="center-block">Month View</h2>
-<button type="button" class="btn btn-default btn-sm" ng-click="status.open = !status.open">Toggle last panel</button>
 
-<div calendar="myCalendar" ui-calendar="calendarConfig.calendar" class="" ng-model="eventSources"></div>
+<div class="container">
+	<h2 class="text-center">{{calendarTitle}}</h2>
+
+	<div class="row">
+		<button ng-show="calendarView == 'day'" class="btn btn-warning" ng-click="calendarView = 'month'">Month View</button>
+		<div ng-show="calendarView == 'month'" class="btn-group">
+			<button class="btn btn-warning" mwl-date-modifier date="calendarDate" decrement="calendarView">Previous Month</button>
+			<button class="btn btn-default" mwl-date-modifier date="calendarDate" set-to-today>Today</button>
+			<button class=" btn btn-warning" mwl-date-modifier date="calendarDate" increment="calendarView">Next Month</button>
+		</div>
+
+		<button class="btn btn-success pull-right">New Event</button>
+	</div>
+
+
+	<mwl-calendar
+		view="calendarView"
+		view-date="calendarDate"
+		events="events"
+		view-title="calendarTitle"
+		on-event-click="onEventClicked(calendarEvent)"
+		on-event-times-changed="calendarEvent.startsAt = calendarNewEventStart; calendarEvent.endsAt = calendarNewEventEnd"
+		edit-event-html="'<i class=\'glyphicon glyphicon-pencil\'></i>'"
+		delete-event-html="'<i class=\'glyphicon glyphicon-remove\'></i>'"
+		on-edit-event-click="eventEdited(calendarEvent)"
+		on-delete-event-click="eventDeleted(calendarEvent)"
+		cell-is-open="true">
+</mwl-calendar>
+
+</div>

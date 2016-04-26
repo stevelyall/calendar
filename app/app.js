@@ -3,7 +3,7 @@
 angular.module('calendar', [
   'ngRoute',
   'ui.bootstrap',
-  'ui.calendar',
+  'mwl.calendar',
   'calendar.weatherService',
   'calendar.monthView'
 ]).
