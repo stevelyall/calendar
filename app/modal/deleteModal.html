@@ -1,0 +1,16 @@
+<div ng-controller="CalendarController">
+	<div class="modal-header">
+		<h3 class="modal-title">{{modalAction}} Event</h3>
+	</div>
+	<div class="modal-body">
+		<p>Are you sure you want to delete the event <em>{{event.title}}</em>?</p>
+	</div>
+
+<div class="modal-footer">
+	<button class="btn btn-default" type="button" ng-click="cancel()">Cancel</button>
+	<button class="btn btn-danger" type="button" ng-click="ok()">Delete</button>
+</div>
+
+</div>
+
+<!--todo this should be a bootstrap alert really-->

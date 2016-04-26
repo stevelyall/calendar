@@ -6,8 +6,8 @@ angular.module('calendar', [
   'ui.bootstrap',
   'mwl.calendar',
   'calendar.weatherService',
-  'calendar.monthView'
+  'calendar.calendarView'
 ]).
 config(['$routeProvider', function($routeProvider) {
-  $routeProvider.otherwise({redirectTo: '/month_view'});
+  $routeProvider.otherwise({redirectTo: '/calendar_view'});
 }]);

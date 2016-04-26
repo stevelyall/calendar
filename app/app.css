@@ -27,3 +27,13 @@
   content: "";
   padding: 0;
 }
+
+#calendarControlBtnRow {
+	margin-bottom: 10px;
+	padding: 0 15px;
+}
+
+#calendarContainer {
+	margin-top: 10px;
+
+}

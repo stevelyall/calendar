@@ -10,7 +10,7 @@ module.exports = function(config){
       
       'app/bower_components/angular-ui-calendar/src/calendar.js',
       'app/components/*.js',
-      'app/month_view/*.js'
+      'app/calendar_view/*.js'
     ],
 
     autoWatch : true,
