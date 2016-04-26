@@ -9,7 +9,7 @@ angular.module('calendar.monthView', ['ngRoute'])
   });
 }])
 
-.controller('MonthViewController', ["$scope", "WeatherService", function($scope, WeatherService) {
+.controller('MonthViewController', ["$scope", "$uibModal", function($scope, $uibModal) {
 
   $scope.calendarView = 'month';
   $scope.calendarDate = new Date;
@@ -38,12 +38,62 @@ angular.module('calendar.monthView', ['ngRoute'])
   };
 
   $scope.onEventEdited = function(event) {
-
+    console.log('event edited')
+    console.log(event)
   }
 
   $scope.onEventDeleted = function(event) {
+    console.log('event deleted')
+    console.log(event)
+  }
+
+  $scope.newEventBtnClick = function() {
+    console.log('new event');
+    $scope.open();
 
   }
 
+  $scope.event = {};
 
-}]);
+  $scope.animationsEnabled = true;
+
+  $scope.open = function (size) {
+
+    var modalInstance = $uibModal.open({
+      animation: $scope.animationsEnabled,
+      templateUrl: 'modal/modal.html',
+      controller: 'ModalInstanceCtrl',
+      size: size,
+      resolve: {
+        event: function () {
+          return $scope.event;
+        }
+      }
+    });
+
+    modalInstance.result.then(function (event) {
+      console.log('modal instance result');
+      $scope.event=  event;
+    }, function () {
+      console.log('Modal dismissed at: ' + new Date());
+    });
+  };
+
+  $scope.toggleAnimation = function () {
+    $scope.animationsEnabled = !$scope.animationsEnabled;
+  };
+
+}])
+  .controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, event) {
+
+    $scope.event = event;
+
+    $scope.ok = function () {
+      $uibModalInstance.close($scope.event);
+      console.log($scope.event)
+    };
+
+    $scope.cancel = function () {
+      $uibModalInstance.dismiss('cancel');
+    };
+  });

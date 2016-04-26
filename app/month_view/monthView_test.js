@@ -6,11 +6,9 @@ describe('calendar.monthView module', function() {
 
   describe('monthView controller', function(){
 
-    it('controller should be defined', inject(function($rootScope, WeatherService, $controller) {
+    it('controller should be defined', inject(function($rootScope, $controller) {
       var scope = $rootScope.$new();
-      module('calendar.weatherService');
-      console.log(WeatherService)
-      var monthController = $controller('MonthViewController', {$scope : scope, WeatherService : weatherService});
+      var monthController = $controller('MonthViewController', {$scope : scope});
 
       expect(monthController).toBeDefined();
     }));

@@ -2,6 +2,7 @@
 
 angular.module('calendar', [
   'ngRoute',
+  'calendar',
   'ui.bootstrap',
   'mwl.calendar',
   'calendar.weatherService',

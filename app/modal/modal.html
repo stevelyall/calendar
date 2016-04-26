@@ -1,0 +1,55 @@
+<div ng-controller="MonthViewController">
+	<div class="modal-header">
+		<h3 class="modal-title">Event</h3>
+	</div>
+	<div class="modal-body">
+		<form name="eventForm" novalidate>
+			<div class="row">
+				<!--Event Name -->
+				<div class="col-md-6">
+					<div class="form-group">
+						<label>Event Name</label>
+						<input type="text" ng-model="event.name" class="form-control" ng-required="true"
+						       minlength="1">
+					</div>
+				</div>
+
+				<!--Event Type -->
+				<div class="col-md-6">
+					<div class="form-group">
+						<label>Event Type</label>
+						<br>
+						<div class="btn-group">
+						<label class="btn btn-success" ng-model="event.type" uib-btn-radio="'Meeting'">Meeting</label>
+						<label class="btn btn-success" ng-model="event.type" uib-btn-radio="'Appointment'">Appointment</label>
+						<label class="btn btn-success" ng-model="event.type" uib-btn-radio="'Task'">Task</label>
+					</div>
+					</div>
+
+				</div>
+			</div>
+
+			<div class="row">
+
+			</div>
+		</form>
+	</div>
+</div>
+
+</form>
+<div class="row">
+	<div class="col-md-4">
+
+	</div>
+</div>
+<div class="row">
+</div>
+
+</div>
+<div class="modal-footer">
+	<button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+	<button class="btn btn-primary" type="button" ng-click="ok()">Ok</button>
+	<!-- TODO ng disable validate form !-->
+</div>
+
+</div>
