@@ -1,0 +1,55 @@
+
+<div class="container">
+<div id="calendarContainer" class="well">
+	<h2 class="text-center">{{calendarTitle}}</h2>
+
+	<div id="weather" class="panel panel-default center-block" ng-show="calendarView == 'day'">
+		<div class="panel-heading">
+			<h5 class="panel-title">Weather Forecast</h5>
+		</div>
+		<div class="penel-body">
+			<div ng-show="dateWeather">
+				<p>{{dateWeather.text}}</p>
+				<span>High: {{dateWeather.high}}</span>
+				<span>Low: {{dateWeather.low}}</span>
+			</div>
+			<div ng-show="!dateWeather">{{noForecastMsg}}</div>
+		</div>
+
+	</div>
+
+	<div id="calendarControlBtnRow" class="row">
+		<button ng-show="calendarView == 'day'" class="btn btn-warning" ng-click="calendarView = 'month'">
+			<span class="glyphicon glyphicon-th" aria-hidden="true"></span>
+			Month View</button>
+
+		<div ng-show="calendarView == 'month'" class="btn-group">
+			<button class="btn btn-warning" mwl-date-modifier date="calendarDate" decrement="calendarView">
+				<span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
+				Previous Month</button>
+			<button class="btn btn-default" mwl-date-modifier date="calendarDate" set-to-today>Today</button>
+			<button class=" btn btn-warning" mwl-date-modifier date="calendarDate" increment="calendarView">
+				Next Month <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+				</button>
+		</div>
+
+		<button class="btn btn-success pull-right" ng-click="newEventBtnClick()">
+			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+			New Event</button>
+	</div>
+
+
+	<mwl-calendar
+		view="calendarView"
+		view-date="calendarDate"
+		events="events"
+		view-title="calendarTitle"
+		edit-event-html="'<i class=\'glyphicon glyphicon-pencil\'></i>'"
+		delete-event-html="'<i class=\'glyphicon glyphicon-trash\'></i>'"
+		on-event-click="onEventEditClick(calendarEvent)"
+		on-edit-event-click="onEventEditClick(calendarEvent)"
+		on-delete-event-click="onEventDeleteClick(calendarEvent)"
+		cell-is-open="false">
+</mwl-calendar>
+</div>
+</div>

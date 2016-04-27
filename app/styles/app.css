@@ -1,0 +1,28 @@
+/* Calendar view styles */
+#calendarControlBtnRow {
+	margin-bottom: 10px;
+	padding: 0 15px;
+}
+
+#calendarContainer {
+	margin-top: 10px;
+
+}
+
+#weather {
+	width:40%;
+	text-align: center;
+}
+
+#weather p {
+	margin-bottom: 0px;
+}
+
+#weather span {
+	padding: 0 5px;
+}
+
+/* Event modal styles */
+p.help-block {
+	color: #a94442;
+}

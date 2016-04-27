@@ -1,12 +1,11 @@
-'use strict';
-
 angular.module('calendar', [
   'ngRoute',
   'ui.bootstrap',
-  'ui.calendar',
+  'mwl.calendar',
   'calendar.weatherService',
-  'calendar.monthView'
+  'calendar.modal',
+  'calendar.calendarController'
 ]).
 config(['$routeProvider', function($routeProvider) {
-  $routeProvider.otherwise({redirectTo: '/month_view'});
+  $routeProvider.otherwise({redirectTo: '/calendar_view'});
 }]);
