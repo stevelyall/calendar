@@ -1,16 +1,20 @@
 <div ng-controller="CalendarController">
-	<div class="modal-header">
-		<h3 class="modal-title">{{modalAction}} Event</h3>
-	</div>
-	<div class="modal-body">
-		<form name="eventForm" novalidate>
+	<form name="eventForm" novalidate>
+
+		<div class="modal-header">
+			<h3 class="modal-title">{{modalAction}} Event</h3>
+		</div>
+
+		<div class="modal-body">
 			<div class="row">
 				<!--Event Name -->
 				<div class="col-md-6">
 					<div class="form-group">
 						<label>Event Name</label>
-						<input type="text" ng-model="event.title" class="form-control" ng-required="true"
-						       minlength="1">
+						<input type="text" ng-model="event.title" name="name" class="form-control" required
+						       ng-required="true">
+						<p ng-show="eventForm.name.$invalid" class="help-block">Event name is required.</p>
+
 					</div>
 				</div>
 
@@ -20,41 +24,47 @@
 						<label>Event Type</label>
 						<br>
 						<div class="btn-group">
-							<label class="btn btn-success" ng-model="event.type" uib-btn-radio="'info'">Meeting</label>
-							<label class="btn btn-success" ng-model="event.type"
+							<label class="btn btn-info" ng-model="event.type" uib-btn-radio="'info'">Meeting</label>
+							<label class="btn btn-warning" ng-model="event.type"
 							       uib-btn-radio="'warning'">Appointment</label>
 							<label class="btn btn-success" ng-model="event.type" uib-btn-radio="'success'">Task</label>
 						</div>
 					</div>
 
 				</div>
+
 			</div>
 
+			<!-- Event Times -->
 			<div class="row">
-
 				<!-- Start -->
 				<div class="col-md-6">
 					<label>Event Start</label>
 					<div class="input-group">
-						<input type="text" class="form-control" uib-datepicker-popup="{{datePickerFormat}}" ng-model="event.startsAt"
+						<input type="text" class="form-control" uib-datepicker-popup="{{datePickerFormat}}"
+						       ng-model="event.startsAt" name="start"
 						       is-open="startDatePopup.opened" ng-required="true"
-						       close-text="X"/>
+						       close-text="Close"/>
 				          <span class="input-group-btn">
 				            <button type="button" class="btn btn-default" ng-click="openStartDatePopup()"><i
 						            class="glyphicon glyphicon-calendar"></i></button>
 				          </span>
+
 					</div>
 					<div class="input-group">
 						<uib-timepicker ng-model="event.startsAt" ng-change="onStartTimeChanged()" hour-step="1"
 						                minute-step="15" show-meridian="true" ng-required="true"></uib-timepicker>
 					</div>
+					<p ng-show="eventForm.start.$invalid" class="help-block">Start date is required.</p>
+
 				</div>
 
 				<!-- End -->
 				<div class="col-md-6">
 					<label>Event End</label>
 					<div class="input-group">
-						<input type="text" class="form-control" uib-datepicker-popup="{{datePickerFormat}}" ng-model="event.endsAt"
+						<input type="text" class="form-control" uib-datepicker-popup="{{datePickerFormat}}"
+						       ng-model="event.endsAt"
 						       is-open="endDatePopup.opened" ng-required="false"
 						       close-text="X"/>
 				          <span class="input-group-btn">
@@ -64,30 +74,19 @@
 					</div>
 					<div class="input-group">
 						<uib-timepicker ng-model="event.endsAt" ng-change="onEndTimeChanged()" hour-step="1"
-						                minute-step="15" show-meridian="true" ng-required="true"></uib-timepicker>
+						                minute-step="15" show-meridian="true"></uib-timepicker>
 					</div>
 				</div>
 
-
 			</div>
-		</form>
-	</div>
-</div>
+		</div>
 
-</form>
-<div class="row">
-	<div class="col-md-4">
 
-	</div>
-</div>
-<div class="row">
-</div>
+		<div class="modal-footer">
+			<button class="btn btn-default" type="button" ng-click="cancel()">Cancel</button>
+			<button class="btn btn-primary" ng-disabled="eventForm.$invalid" type="button" ng-click="ok()">Ok</button>
+			<!-- TODO ng disable validate form !-->
+		</div>
 
-</div>
-<div class="modal-footer">
-	<button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
-	<button class="btn btn-primary" type="button" ng-click="ok()">Ok</button>
-	<!-- TODO ng disable validate form !-->
-</div>
-
+	</form>
 </div>

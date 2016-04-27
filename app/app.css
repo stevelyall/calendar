@@ -37,3 +37,20 @@
 	margin-top: 10px;
 
 }
+
+#weather {
+	width:40%;
+	text-align: center;
+}
+
+#weather p {
+	margin-bottom: 0px;
+}
+
+#weather span {
+	padding: 0 5px;
+}
+
+p.help-block {
+	color: #a94442;
+}
