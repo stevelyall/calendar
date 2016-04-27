@@ -1,3 +1,7 @@
+/**
+ * Controller for event modal.
+ */
+
 angular.module('calendar.modal', [])
 .controller('ModalInstanceController', function ($scope, $uibModalInstance, event, modalAction) {
 

@@ -44,13 +44,11 @@
 		view-date="calendarDate"
 		events="events"
 		view-title="calendarTitle"
-		on-event-click="onEventClicked(calendarEvent)"
-		on-event-times-changed="calendarEvent.startsAt = calendarNewEventStart; calendarEvent.endsAt = calendarNewEventEnd"
 		edit-event-html="'<i class=\'glyphicon glyphicon-pencil\'></i>'"
-		delete-event-html="'<i class=\'glyphicon glyphicon-remove\'></i>'"
+		delete-event-html="'<i class=\'glyphicon glyphicon-trash\'></i>'"
+		on-event-click="onEventEditClick(calendarEvent)"
 		on-edit-event-click="onEventEditClick(calendarEvent)"
 		on-delete-event-click="onEventDeleteClick(calendarEvent)"
-		on-view-change-click="onViewChangeClick(calendarCell)"
 		cell-is-open="false">
 </mwl-calendar>
 </div>

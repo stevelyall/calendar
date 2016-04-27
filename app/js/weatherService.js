@@ -1,5 +1,7 @@
-'use strict';
-
+/**
+ * Retrieves weather from Yahoo API, provides CalendarController with
+ * forecast for given day.
+ */
 angular.module('calendar.weatherService', [])
 .factory('WeatherService', function ($http) {
 
@@ -8,7 +10,6 @@ angular.module('calendar.weatherService', [])
 
   $http.get(weatherEndpoint)
     .then(function(response) {
-      console.log(response.data)
       var weather = response.data.query.results.channel;
       var tempUnit = weather.units.temperature;
       weather.item.forecast.forEach(function(dayForecast) {
@@ -26,7 +27,6 @@ angular.module('calendar.weatherService', [])
       date = moment(date).format('DD MMM YYYY');
       return forecast[date];
     }
-    
   }
 
 });
