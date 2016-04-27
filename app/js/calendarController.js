@@ -33,7 +33,6 @@ angular.module('calendar.calendarController', ['ngRoute'])
     $scope.events.push(new Event('Return Calendar', 'Appointment', moment("20160427T1000").toDate()));
     $scope.events.push(new Event('Complete Calendar', 'Task', moment("20160425T1000").toDate(), moment("20160427T1000").toDate()));
     $scope.events.push(new Event('Packing', 'Meeting', moment("20160423T1700").toDate(), moment("20160428T0900").toDate()));
-
     $scope.events.push(new Event('Meeting with Greg', 'Meeting', moment("20160425T0930").toDate(), moment().add(2, 'hours').toDate()));
     $scope.events.push(new Event('Sign Storage Agreement', 'Task', moment("20160428T1200").toDate()));
 

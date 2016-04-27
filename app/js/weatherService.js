@@ -12,6 +12,7 @@ angular.module('calendar.weatherService', [])
     .then(function(response) {
       var weather = response.data.query.results.channel;
       var tempUnit = weather.units.temperature;
+
       weather.item.forecast.forEach(function(dayForecast) {
         dayForecast.high += " " + tempUnit;
         dayForecast.low += " " + tempUnit;

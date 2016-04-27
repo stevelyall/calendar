@@ -25,5 +25,7 @@ The calendar is built with AngularJS and Bootstrap and also includes the followi
 
 ## Installation
 
+From the project directory, with NPM and Bower installed, run:
+
 `bower install`
 
