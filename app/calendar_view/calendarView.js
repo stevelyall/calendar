@@ -12,23 +12,19 @@ angular.module('calendar.calendarView', ['ngRoute'])
 .controller('CalendarController', ["$scope", "$uibModal", "WeatherService", function($scope, $uibModal, WeatherService) {
   $scope.calendarView = 'month';
   $scope.calendarDate = new Date;
+  $scope.animationsEnabled = true;
+
+  $scope.datePickerFormat = 'dd-MMMM-yyyy';
 
   $scope.noForecastMsg = 'No forecast available for this day';
 
   $scope.$watch('calendarDate', function() {
     $scope.dateWeather = WeatherService.getWeatherForDate($scope.calendarDate);
-    // console.log($scope.dateWeather)
   });
 
-  $scope.$watch('$scope.eventForm.$invalid', function() {
-    console.log($scope.eventForm)
-  })
   $scope.events = [];
   $scope.events.push(new Event('Test Event', 'info', new Date()));
-//  $scope.events.push(new Event('Test Event', 'warning', new Date()));
  // $scope.events.push(new Event('Test Event', 'success', new Date(), new Date()));
-
-  // TODO start and end times can't match exactly
 
 
   function Event(title, type, start, end) {
@@ -80,7 +76,7 @@ angular.module('calendar.calendarView', ['ngRoute'])
     console.log(cell)
   }
 
-  $scope.animationsEnabled = true;
+
 
   $scope.openModal = function (size) {
 
@@ -160,19 +156,12 @@ angular.module('calendar.calendarView', ['ngRoute'])
       opened : false
     };
 
-    $scope.datePickerFormat = 'dd-MMMM-yyyy';
-
-    // console.log($scope.event);
-
     $scope.ok = function () {
-    console.log($scope.event.$id)
-    console.log(event.$id)
       var modalResult = {
         action : $scope.modalAction,
         event : $scope.event,
         eventIndex : eventIndex
       };
-      // console.log(modalResult)
       $uibModalInstance.close(modalResult);
     };
 
