@@ -6,6 +6,7 @@ angular.module('calendar', [
   'ui.bootstrap',
   'mwl.calendar',
   'calendar.weatherService',
+  'calendar.modal',
   'calendar.calendarView'
 ]).
 config(['$routeProvider', function($routeProvider) {

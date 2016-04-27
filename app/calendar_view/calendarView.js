@@ -52,7 +52,7 @@ angular.module('calendar.calendarView', ['ngRoute'])
     $scope.modalAction = 'Edit';
     $scope.openModal();
     console.log(event)
-  }
+  };
 
   $scope.onEventDeleteClick = function(event) {
     console.log('event deleted')
@@ -61,7 +61,7 @@ angular.module('calendar.calendarView', ['ngRoute'])
     $scope.modalAction = 'Delete';
     $scope.openModal();
 
-  }
+  };
 
   $scope.newEventBtnClick = function() {
     console.log('new event');
@@ -69,12 +69,12 @@ angular.module('calendar.calendarView', ['ngRoute'])
     $scope.modalAction = 'Add';
     $scope.openModal();
 
-  }
+  };
 
   $scope.onViewChangeClick = function(cell) {
     console.log('viewchange')
     console.log(cell)
-  }
+  };
 
 
 
@@ -83,7 +83,7 @@ angular.module('calendar.calendarView', ['ngRoute'])
     var modalConfig = {
       animation: $scope.animationsEnabled,
      // templateUrl: 'modal/modal.html',
-      controller: 'ModalInstanceCtrl',
+      controller: 'ModalInstanceController',
       size: size,
       resolve: {
         modalAction : function() {
@@ -104,70 +104,20 @@ angular.module('calendar.calendarView', ['ngRoute'])
       var resultEvent = result.event;
       var eventIndex = result.eventIndex;
 
-      console.log($scope.events);
-
-      console.log(resultEvent)
-
       if (result.action == 'Add') {
-        console.log('modalAdded');
         $scope.events.push(resultEvent);
       }
       if (result.action == 'Edit') {
-        console.log('modal edited');
         $scope.events[eventIndex] = resultEvent;
       }
       if (result.action == 'Delete') {
-        console.log('modal deleted');
         console.log(resultEvent)
         $scope.events.splice(resultEvent)
       }
 
-     // $scope.event =  event;
-
     }, function () {
-      console.log('Modal dismissed at: ' + new Date());
+      console.log('modal closed');
     });
   };
 
-    $scope.animationsEnabled = true;
-
-}])
-  .controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, event, modalAction) {
-
-    $scope.modalAction = modalAction;
-    var eventIndex = event.$id;
-    $scope.event = angular.copy(event);
-
-
-    $scope.openStartDatePopup = function() {
-      $scope.startDatePopup.opened = true;
-
-    };
-
-    $scope.openEndDatePopup = function() {
-      $scope.endDatePopup.opened = true;
-    };
-
-    $scope.startDatePopup = {
-      opened : false
-    };
-
-    $scope.endDatePopup = {
-      opened : false
-    };
-
-    $scope.ok = function () {
-      var modalResult = {
-        action : $scope.modalAction,
-        event : $scope.event,
-        eventIndex : eventIndex
-      };
-      $uibModalInstance.close(modalResult);
-    };
-
-    $scope.cancel = function () {
-      $uibModalInstance.dismiss('cancel');
-    };
-    
-    
-  });
+}]);
