@@ -19,23 +19,30 @@
 	</div>
 
 	<div id="calendarControlBtnRow" class="row">
+		<div class="col-md-4">
 		<button ng-show="calendarView == 'day'" class="btn btn-warning" ng-click="calendarView = 'month'">
 			<span class="glyphicon glyphicon-th" aria-hidden="true"></span>
 			Month View</button>
-
-		<div ng-show="calendarView == 'month'" class="btn-group">
+		<button ng-show="calendarView == 'month'" class="btn btn-warning" ng-click="calendarView = 'day'">
+			<span class="glyphicon glyphicon-th" aria-hidden="true"></span>
+			Day View</button>
+		</div>
+		<div class="col-md-4 btn-group">
+			<div ng-show="calendarView == 'month'" class="text-center">
 			<button class="btn btn-warning" mwl-date-modifier date="calendarDate" decrement="calendarView">
 				<span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
-				Previous Month</button>
+				Back</button>
 			<button class="btn btn-default" mwl-date-modifier date="calendarDate" set-to-today>Today</button>
 			<button class=" btn btn-warning" mwl-date-modifier date="calendarDate" increment="calendarView">
-				Next Month <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+				Ahead<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
 				</button>
+			</div>
 		</div>
-
+		<div class="col-md-4">
 		<button class="btn btn-success pull-right" ng-click="newEventBtnClick()">
 			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 			New Event</button>
+		</div>
 	</div>
 
 

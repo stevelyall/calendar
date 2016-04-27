@@ -20,15 +20,24 @@ angular.module('calendar.calendarController', ['ngRoute'])
     $scope.datePickerFormat = 'dd-MMMM-yyyy';
 
     $scope.noForecastMsg = 'No forecast available for this day';
+    $scope.dateRangeInvalidMsg = '';
 
     $scope.$watch('calendarDate', function () {
       $scope.dateWeather = WeatherService.getWeatherForDate($scope.calendarDate);
     });
 
     $scope.events = [];
-    $scope.events.push(new Event('Test Event', 'Meeting', new Date()));
-    // $scope.events.push(new Event('Test Event', 'success', new Date(), moment().add(2, 'hours').toDate()));
 
+    // test events
+    $scope.events.push(new Event('Exam Period', 'Appointment', moment("20160408T0900").toDate(), moment("20160423T2359").toDate()));
+    $scope.events.push(new Event('Return Calendar', 'Appointment', moment("20160427T1000").toDate()));
+    $scope.events.push(new Event('Complete Calendar', 'Task', moment("20160425T1000").toDate(), moment("20160427T1000").toDate()));
+    $scope.events.push(new Event('Packing', 'Meeting', moment("20160423T1700").toDate(), moment("20160428T0900").toDate()));
+
+    $scope.events.push(new Event('Meeting with Greg', 'Meeting', moment("20160425T0930").toDate(), moment().add(2, 'hours').toDate()));
+    $scope.events.push(new Event('Sign Storage Agreement', 'Task', moment("20160428T1200").toDate()));
+
+    
     $scope.onEventEditClick = function (event) {
       $scope.event = event;
       $scope.modalAction = 'Edit';
@@ -45,6 +54,16 @@ angular.module('calendar.calendarController', ['ngRoute'])
       $scope.event = new Event();
       $scope.modalAction = 'Add';
       $scope.openModal();
+    };
+
+
+   $scope.checkDateRangeValid = function(start, end) {
+      if (end < start) {
+        $scope.dateRangeInvalidMsg = "Event end time must be after start time";
+        return false;
+      }
+     $scope.dateRangeInvalidMsg = '';
+      return true;
     };
 
     /**
