@@ -7,7 +7,7 @@ The month view can be paged through the next and previous months, and a button r
 
 When the month view is displayed and a day is clicked, a slider opens with the list of events for that day. Each event has a button to edit or delete it. 
 
-When a date in the month view is clicked, the view for the day is displayed. For each day, the weather forecast for Vancouver from the Yahoo Weather API.
+When a date in the month view is clicked, the view for the day is displayed. For each day, the weather forecast for Vancouver is shown, retrieved from the Yahoo Weather API.
 
 The calendar works in the latest versions of Chrome and Firefox, and does not contain table elements. It provides highlighting to indicate the current day, and correct hover actions where necessary.
 
